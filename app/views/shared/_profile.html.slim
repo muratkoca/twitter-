@@ -1,0 +1,5 @@
+.profile.clearfix
+  = link_to gravatar_for(@user, size: 70), @user
+  div = link_to "@"+@user.slug, @user
+  div = @user.name
+  = render 'shared/follow_form' if signed_in?

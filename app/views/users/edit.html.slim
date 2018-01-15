@@ -1,0 +1,32 @@
+- provide(:title, 'Edit user')
+.row
+  div.col-md-12.one-col
+    h1 Profilini Güncelle
+
+    = form_for(@user) do |f|
+      = render 'shared/error_messages', object: f.object
+
+      .form-group
+        = f.label :isim, class: 'control-label'
+        = f.text_field :name, class: 'form-control'
+
+      .form-group
+        = f.label :email, class: 'control-label'
+        = f.text_field :email, class: 'form-control'
+
+      .form-group
+        = f.label :şifre, class: 'control-label'
+        = f.password_field :password, class: 'form-control'
+
+      .form-group
+        = f.label :şifre_tekrar, class: 'control-label'
+        = f.password_field :password_confirmation, class: 'form-control'
+
+      .actions
+        = f.submit "Ayarları Kaydet", class: "btn btn-large btn-primary"
+      p
+      div
+        = gravatar_for @user
+        <a href="http://gravatar.com/emails">change</a>
+      p
+    = link_to 'Hesabımı sil', @user, method: :delete, data: { confirm: 'Silinsin mi?' }, class: "btn btn-danger"

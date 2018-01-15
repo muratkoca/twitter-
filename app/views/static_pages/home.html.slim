@@ -1,0 +1,21 @@
+.row
+  - if signed_in?
+    - provide(:title, 'Anasayfa')
+    aside.col-md-4
+      section
+        = render 'shared/user_info'
+
+    div.col-md-8
+      .timeline
+        h2.title Tweetler
+        = render 'shared/feed'
+
+  - else
+    - provide(:title, 'Hoşgeldiniz')
+    div.col-md-12.one-col
+      h1 HOŞGELDİNİZ!
+      p Hemen Tweet atmak için Giriş yapın! veya Tweet dünyasına katılmak için Kayıt Olun!
+
+      = link_to 'Giriş Yap', signin_path, class: "btn btn-default"
+      p 
+      = link_to 'Kayıt Ol', signup_path, class: "btn btn-primary"
